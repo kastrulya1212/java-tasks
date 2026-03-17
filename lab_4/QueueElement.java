@@ -27,6 +27,11 @@ public class QueueElement<T extends Comparable<T>> implements Comparable<QueueEl
         this.next_element = null; 
     }
 
+    public QueueElement(T data, QueueElement<T> element) {
+        this.data = data;
+        this.next_element = element; 
+    }
+
     // Methods
     @Override
     public int compareTo(QueueElement<T> other) {
