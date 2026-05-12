@@ -37,32 +37,33 @@ public class Complex {
     // Methods
     public Complex addComplex(Complex obj2) {
         Complex obj1 = this;
-        double result_real_num = obj1.getRealPart() + obj1.getImaginaryPart();
-        double result_imaginary_num = obj2.getRealPart() + obj2.getImaginaryPart();
+        double result_real_num = obj1.getRealPart() + obj2.getRealPart();
+        double result_imaginary_num = obj1.getImaginaryPart() + obj2.getImaginaryPart();
         Complex obj_result = new Complex(result_real_num, result_imaginary_num);
         return obj_result;
     }
 
     public Complex subComplex(Complex obj2) {
         Complex obj1 = this;
-        double result_real_num = obj1.getRealPart() - obj1.getImaginaryPart();
-        double result_imaginary_num = obj2.getRealPart() - obj2.getImaginaryPart();
+        double result_real_num = obj1.getRealPart() - obj2.getRealPart();
+        double result_imaginary_num = obj1.getImaginaryPart() - obj2.getImaginaryPart();
         Complex obj_result = new Complex(result_real_num, result_imaginary_num);
         return obj_result;
     }
 
     public Complex mulComplex(Complex obj2) {
         Complex obj1 = this;
-        double result_real_num = (obj1.getRealPart() * obj2.getRealPart()) + (obj1.getImaginaryPart() * obj2.getImaginaryPart());
-        double result_imaginary_num = (obj1.getRealPart() * obj1.getImaginaryPart()) + (obj2.getRealPart() * obj2.getImaginaryPart());
+        double result_real_num = (obj1.getRealPart() * obj2.getRealPart()) - (obj1.getImaginaryPart() * obj2.getImaginaryPart());
+        double result_imaginary_num = (obj1.getRealPart() * obj2.getImaginaryPart()) + (obj1.getImaginaryPart() * obj2.getRealPart());
         Complex obj_result = new Complex(result_real_num, result_imaginary_num);
         return obj_result;
     }
 
     public Complex divComplex(Complex obj2) {
         Complex obj1 = this;
-        double result_real_num = ((obj1.getRealPart() * obj2.getRealPart()) + (obj1.getImaginaryPart() + obj2.getImaginaryPart())) / (Math.pow(obj2.getRealPart(), 2) + Math.pow(obj2.getImaginaryPart(), 2));
-        double result_imaginary_num = ((obj2.getImaginaryPart() * obj1.getRealPart()) - (obj1.getRealPart() + obj2.getImaginaryPart())) / (Math.pow(obj2.getRealPart(), 2) + Math.pow(obj2.getImaginaryPart(), 2));
+        double denominator = Math.pow(obj2.getRealPart(), 2) + Math.pow(obj2.getImaginaryPart(), 2);
+        double result_real_num = ((obj1.getRealPart() * obj2.getRealPart()) + (obj1.getImaginaryPart() * obj2.getImaginaryPart())) / denominator;
+        double result_imaginary_num = ((obj1.getImaginaryPart() * obj2.getRealPart()) - (obj1.getRealPart() * obj2.getImaginaryPart())) / denominator;
         Complex obj_result = new Complex(result_real_num, result_imaginary_num);
         return obj_result;
     }
